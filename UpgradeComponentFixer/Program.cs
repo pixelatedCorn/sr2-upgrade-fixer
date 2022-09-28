@@ -25,9 +25,10 @@ namespace UpgradeComponentFixer
             }
             else
             {
-                string SaveFilePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"..\LocalLow\MonomiPark\SlimeRancher2\Steam\";
+                string SaveFilePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\..\LocalLow\MonomiPark\SlimeRancher2\Steam\";
                 SaveFilePath = Directory.GetDirectories(SaveFilePath)[0];
                 DirectoryInfo dir = new DirectoryInfo(SaveFilePath);
+                FileInfo[] files = dir.GetFiles();
                 FileInfo file = dir.GetFiles().OrderByDescending(f => f.LastWriteTime).Where(f => f.Name.Split('.')[1] == "sav").First();
                 return file.FullName;
             }
